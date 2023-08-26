@@ -91,6 +91,8 @@ void FilterUntrackedFiles(List<string> src, out Dictionary<uint, string> hashes)
             if (!hashes.TryAdd(hash, name)) {
                 Console.WriteLine($"{name} >> {hashes[hash]}");
             }
+
+            continue;
         }
 
         src.RemoveAt(i);
