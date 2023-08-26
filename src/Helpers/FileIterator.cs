@@ -17,30 +17,22 @@ public class FileIterator
     public static async Task<List<string>> Collect(string path, TotkZstd zs)
     {
         FileIterator iterator = new(zs);
-        await iterator.IterateParallel(path);
+        await iterator.Iterate(path);
         return iterator._master.Order().Distinct().ToList();
     }
 
-    public async Task IterateParallel(string path)
+    public async Task Iterate(string path)
     {
-        IEnumerable<string> folders = Directory.EnumerateDirectories(path);
-        await Parallel.ForEachAsync(folders, async (folder, cancellationToken) =>
-        {
-            await Iterate(folder, path);
-        });
-    }
+        foreach (var file in Directory.GetFiles(path, "*.*", SearchOption.AllDirectories)) {
+            string fileName = Path.GetRelativePath(path, file).Canonical();
 
-    public async Task Iterate(string path, string root)
-    {
-        foreach (var file in Directory.GetFiles(path, "*.*", SearchOption.AllDirectories))
-        {
-            string fileName = Path.GetRelativePath(root, file).Canonical();
+            if (fileName.EndsWith(".bwav") || fileName.EndsWith(".hght")) {
+                continue;
+            }
 
-            if (Path.GetExtension(fileName) is ".bfarc" or ".blarc" or ".genvb" or ".pack" or ".sarc" or ".ta")
-            {
+            if (Path.GetExtension(fileName) is ".bfarc" or ".blarc" or ".genvb" or ".pack" or ".sarc" or ".ta.zs") {
                 SarcFile sarc = SarcFile.FromBinary(_zs.Decompress(file).ToArray());
-                foreach ((var nestedFileName, _) in sarc)
-                {
+                foreach ((var nestedFileName, _) in sarc) {
                     _master.Add(nestedFileName.Canonical());
                     await Console.Out.WriteAsync($"\rLocated {++_count}");
                 }
