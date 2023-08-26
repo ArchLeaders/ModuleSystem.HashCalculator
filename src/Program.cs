@@ -19,7 +19,7 @@ if (isFloatingConsole = args.Length <= 0) {
 else if (args[0] is "-h" or "--help") {
     await Console.Out.WriteLineAsync("""
         Usage:
-          TotK-HashCalculator <path> [-o|--output OUTPUT]
+          TotK-HashCalculator <path> [-o|--output OUTPUT] [-v|--version VERSION]
         """);
 }
 else {
