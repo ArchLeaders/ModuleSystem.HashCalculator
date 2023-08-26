@@ -1,0 +1,59 @@
+name: Release
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    permissions: write-all
+    name: Build ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        config:
+          - name: Linux
+            os: ubuntu-latest
+            ext: ~
+            runtime: linux-x64
+          - name: Windows
+            os: ubuntu-latest
+            ext: .exe
+            runtime: win-x64
+          - name: MacOS
+            os: ubuntu-latest
+            ext: ~
+            runtime: osx-x64
+
+    env:
+      proj: "Totk.HashCalculator"
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Install DotNET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "7.0.x"
+
+      - name: Publish Totk Hash Calculator
+        shell: bash
+        run: |
+          dotnet publish src/${{ env.proj }}.csproj \
+          -r ${{ matrix.config.runtime }} \
+          -c Release \
+          --sc false \
+          --version-suffix ${{ github.event.release.tag_name }} \
+          -o ${{ matrix.config.name }} \
+          -p:Version=${{ github.event.release.tag_name }} \
+          -p:PublishSingleFile=true \
+          -p:IncludeNativeLibrariesForSelfExtract=true \
+          -p:PublishReadyToRun=true
+
+      - name: Upload artifacts
+        uses: Shopify/upload-to-release@v1.0.1
+        with:
+          name: TotK-HashCalculator-${{ matrix.config.runtime }}${{ matrix.config.ext }}
+          path: ${{ matrix.config.name }}/${{ env.proj }}${{ matrix.config.ext }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
