@@ -1,6 +1,4 @@
-﻿using System.Net.Security;
-
-namespace Totk.HashCalculator;
+﻿namespace Totk.HashCalculator;
 
 public class Flags
 {
