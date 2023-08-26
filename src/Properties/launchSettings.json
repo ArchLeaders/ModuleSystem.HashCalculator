@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Totk.HashCalculator": {
+      "commandName": "Project",
+      "commandLineArgs": "F:\\Games\\Totk\\RomFS-1.0.0 -v 1.0.0 -o D:\\Bin\\Totk\\Restbl\\Dump"
+    }
+  }
+}
