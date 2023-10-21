@@ -1,6 +1,6 @@
 ﻿namespace ModuleSystem.HashCalculator.Helpers;
 
-public static class TotkPathExtension
+public static class ModuleSystemPathExtension
 {
     public static string Canonical(this string path)
     {

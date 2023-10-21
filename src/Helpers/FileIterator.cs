@@ -6,15 +6,15 @@ namespace ModuleSystem.HashCalculator.Helpers;
 public class FileIterator
 {
     private readonly ConcurrentBag<string> _master = new();
-    private readonly TotkZstd _zs;
+    private readonly ModuleSystemZstd _zs;
     private int _count = 0;
 
-    public FileIterator(TotkZstd zs)
+    public FileIterator(ModuleSystemZstd zs)
     {
         _zs = zs;
     }
 
-    public static async Task<List<string>> Collect(string path, TotkZstd zs)
+    public static async Task<List<string>> Collect(string path, ModuleSystemZstd zs)
     {
         FileIterator iterator = new(zs);
         await iterator.Iterate(path);
@@ -31,7 +31,7 @@ public class FileIterator
             }
 
             if (Path.GetExtension(fileName) is ".bfarc" or ".blarc" or ".genvb" or ".pack" or ".sarc" or ".ta.zs") {
-                SarcFile sarc = SarcFile.FromBinary(_zs.Decompress(file).ToArray());
+                SarcFile sarc = SarcFile.FromBinary(_zs.TryDecompress(file).ToArray());
                 foreach ((var nestedFileName, _) in sarc) {
                     _master.Add(nestedFileName.Canonical());
                     await Console.Out.WriteAsync($"\rLocated {++_count}");
