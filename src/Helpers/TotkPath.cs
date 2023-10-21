@@ -1,4 +1,4 @@
-﻿namespace Totk.HashCalculator.Helpers;
+﻿namespace ModuleSystem.HashCalculator.Helpers;
 
 public class TotkPath
 {

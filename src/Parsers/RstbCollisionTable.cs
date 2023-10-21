@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace Totk.HashCalculator.Parsers;
+namespace ModuleSystem.HashCalculator.Parsers;
 
 public readonly ref struct RstbCollisionTable
 {

@@ -1,7 +1,7 @@
 ﻿using SarcLibrary;
 using System.Collections.Concurrent;
 
-namespace Totk.HashCalculator.Helpers;
+namespace ModuleSystem.HashCalculator.Helpers;
 
 public class FileIterator
 {

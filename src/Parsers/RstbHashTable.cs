@@ -1,7 +1,7 @@
 ﻿using System.Buffers.Binary;
 using System.Runtime.CompilerServices;
 
-namespace Totk.HashCalculator.Parsers;
+namespace ModuleSystem.HashCalculator.Parsers;
 
 public readonly ref struct RstbHashTable
 {

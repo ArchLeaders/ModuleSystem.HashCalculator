@@ -1,7 +1,7 @@
 ﻿using SarcLibrary;
 using ZstdSharp;
 
-namespace Totk.HashCalculator.Helpers;
+namespace ModuleSystem.HashCalculator.Helpers;
 
 public class TotkZstd
 {

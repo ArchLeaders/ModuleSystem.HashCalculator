@@ -1,4 +1,4 @@
-﻿namespace Totk.HashCalculator;
+﻿namespace ModuleSystem.HashCalculator;
 
 public class Flags
 {

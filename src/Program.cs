@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
 using System.Text.Json;
-using Totk.HashCalculator;
-using Totk.HashCalculator.Helpers;
-using Totk.HashCalculator.Parsers;
+using ModuleSystem.HashCalculator;
+using ModuleSystem.HashCalculator.Helpers;
+using ModuleSystem.HashCalculator.Parsers;
 
 Console.WriteLine($"""
     TotK Hash Calculator [Version {Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "Undefined"}]
@@ -21,6 +21,8 @@ else if (args[0] is "-h" or "--help") {
         Usage:
           TotK-HashCalculator <path> [-o|--output OUTPUT] [-v|--version VERSION]
         """);
+
+    return;
 }
 else {
     path = args[0];

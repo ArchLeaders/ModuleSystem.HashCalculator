@@ -1,11 +1,12 @@
-# TotK hash Calculator
+# Nintendo Module System Hash Calculator
 
 A simple script used to generated a hash table and strings list used to decode RSTB/RESTBL hashes.
 
 ## Usage
 
-```
-TotK-HashCalculator <path> [-o|--output OUTPUT] [-v|--version VERSION]
+```sh
+NMS-HashCalculator <path> [-o|--output OUTPUT] [-v|--version VERSION]
+
 ```
 
 - **Path:** The path to your game files [Required]
@@ -14,6 +15,7 @@ TotK-HashCalculator <path> [-o|--output OUTPUT] [-v|--version VERSION]
 
 ### In-app help message
 
-```
-TotK-HashCalculator -h|--help
+```sh
+NMS-HashCalculator -h|--help
+
 ```

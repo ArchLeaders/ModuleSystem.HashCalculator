@@ -1,6 +1,6 @@
 ﻿using System.Buffers.Binary;
 
-namespace Totk.HashCalculator.Parsers;
+namespace ModuleSystem.HashCalculator.Parsers;
 
 public readonly ref struct Rstb
 {

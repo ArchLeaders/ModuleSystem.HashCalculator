@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Totk.HashCalculator", "src\Totk.HashCalculator.csproj", "{D27A08BF-3B8D-4D8C-9328-E40EA3D72B36}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleSystem.HashCalculator", "src\ModuleSystem.HashCalculator.csproj", "{D27A08BF-3B8D-4D8C-9328-E40EA3D72B36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

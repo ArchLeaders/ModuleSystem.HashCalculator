@@ -27,7 +27,7 @@ jobs:
             runtime: osx-x64
 
     env:
-      proj: "Totk.HashCalculator"
+      proj: "ModuleSystem.HashCalculator"
 
     steps:
       - uses: actions/checkout@master

@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Totk.HashCalculator.Helpers;
+namespace ModuleSystem.HashCalculator.Helpers;
 
 /// <summary>
 /// Computes a CRC32 checksum.
