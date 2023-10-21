@@ -33,15 +33,15 @@ Flags flags = Flags.Parse(args);
 string version = flags.TryGet(out string? versionValue, "version", "v")
     ? versionValue! : "1.0.0";
 
-ModuleSystemPath totkPath = new(path ?? string.Empty, version);
+ModuleSystemPath msPath = new(path ?? string.Empty, version);
 
-while (!Directory.Exists(path ??= Console.ReadLine() ?? string.Empty) || !ModuleSystemPath.IsValid(path, version, out totkPath)) {
+while (!Directory.Exists(path ??= Console.ReadLine() ?? string.Empty) || !ModuleSystemPath.IsValid(path, version, out msPath)) {
     await Console.Out.WriteLineAsync($"Error: Invalid path '{path}'");
     await Console.Out.WriteAsync("Please enter the source directory: ");
     path = null;
 }
 
-ModuleSystemZstd zs = new(totkPath.ZsDicPath);
+ModuleSystemZstd zs = new(msPath.ZsDicPath);
 
 await Console.Out.WriteLineAsync("Collecting file names...");
 List<string> files = await FileIterator.Collect(path, zs);
@@ -77,7 +77,7 @@ if (isFloatingConsole) {
 
 void FilterUntrackedFiles(List<string> src, out Dictionary<uint, string> hashes)
 {
-    Span<byte> data = zs.TryDecompress(totkPath.RstbPath);
+    Span<byte> data = zs.TryDecompress(msPath.RstbPath);
     Rstb rstb = new(data);
 
     hashes = new();
