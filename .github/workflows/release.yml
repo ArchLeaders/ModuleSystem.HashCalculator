@@ -37,7 +37,7 @@ jobs:
         with:
           dotnet-version: "7.0.x"
 
-      - name: Publish Totk Hash Calculator
+      - name: Publish Module System Hash Calculator
         shell: bash
         run: |
           dotnet publish src/${{ env.proj }}.csproj \
@@ -54,6 +54,6 @@ jobs:
       - name: Upload artifacts
         uses: Shopify/upload-to-release@v1.0.1
         with:
-          name: TotK-HashCalculator-${{ matrix.config.runtime }}${{ matrix.config.ext }}
+          name: NMS-HashCalculator-${{ matrix.config.runtime }}${{ matrix.config.ext }}
           path: ${{ matrix.config.name }}/${{ env.proj }}${{ matrix.config.ext }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
